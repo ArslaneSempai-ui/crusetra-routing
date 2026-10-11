@@ -29,7 +29,7 @@ that pass actually cost is stated below, read from the relevé rather than round
 | Command | What it does, in the order that makes sense |
 |---|---|
 | `npm ci --ignore-scripts` | install exactly the versions the lockfile pins, and run no install script from any dependency; nothing below runs without it. What reaches the network: this command; the first run of `measure`, `measure:yours`, `ocr`, `recertify` and `poids -- --prime` (the model weights, from huggingface.co, once); `tessdata -- --prime` (two OCR language files, from github.com, once); and `benchmark` (its dataset). Nothing else does. It also skips this repository's own `prepare`, so run `git config core.hooksPath .githooks` yourself if you intend to commit; until then the hooks case of the suite stands aside and says so |
-| `npm run test` | types, figures and the suite. Start here. Downloads nothing: the 11 cases that need the model weights stand aside, each with its reason, until `npm run poids -- --prime` has fetched them; the hooks case stands aside outside continuous integration when `core.hooksPath` is unset; everything else runs on what git carries |
+| `npm run test` | types, figures and the suite. Start here. Downloads nothing: the 12 cases that need the model weights stand aside, each with its reason, until `npm run poids -- --prime` has fetched them; the hooks case stands aside outside continuous integration when `core.hooksPath` is unset; everything else runs on what git carries |
 | `npm run measure` | measure the encoder tiers and freeze the profile (at least 1.3 GB downloaded on the first run; `npm run poids` lists each one) |
 | `npm run sceller` | seal a profile: a content hash, not a signature. It shows an edit made after sealing; it does not say who issued the file (the Ed25519 signature beside a shipped record does). `--check` verifies and writes nothing; without it, the command re-declares the seal on an edited file |
 | `npm run diff` | compare two sealed runs case by case; a record whose seal no longer matches its content is refused, and a rising rate can still have lost cases |
@@ -60,8 +60,10 @@ that pass actually cost is stated below, read from the relevé rather than round
 | `npm run grade` | grade one vendor's extracted values against your labelled CSV and write the `--sorties` file `measure:yours` reads: clean, wrong or blank per case and field, the grader's version and each field's declared kind (`total:amount`, `closing_date:date`), never a value. Reads a folder of Textract, Document AI or Azure Document Intelligence exports offline through a small mapping file, or a plain JSON of values your chain wrote; carries the price per thousand pages you declare |
 | `npm run measure:humans` | the human tier, on cases your reviewers already worked: the one figure every page here calls assumed. Accuracy, agreement and seconds per case, aggregated (no per-person output), written beside your CSV as a report and a sealed record of verdicts, never a value; `optimise -- --humans=<record>` then uses the measurement and says so |
 | `npm run recertify` | does the spring measurement still hold? Re-measures a new CSV under the sealed baseline record's own protocol (same fields, same questions, same tiers) and says per field: holds, or MOVED (exit code 1), naming the cases that used to pass and no longer do. Measures input drift against its own noise floor when the spring CSV is still beside the record. Writes `<file>-recertified.md` and a sealed `<file>-recertified.json`, which serves as the next baseline |
+| `npm run livrer` | one-command client delivery of the extraction cost audit: the client's CSV and the graded outcomes of their chains in, a dated folder out with the report, the sealed record, a SHA-256 manifest of every file and a French cover-note draft; offline, and it sends nothing |
 | `npm run benchmark` | the same measurement on a public labelled dataset; it downloads that dataset, and nothing of yours goes up |
 | `npm run intake` | turn a filled-in questionnaire into the assumptions a run uses; `npm run intake` alone writes the blank template, and never over an existing one |
+| `npm run lots` | prepare a cold-email batch offline and send nothing: the bounce gate (5 %), the checks that need no network (syntax, role addresses, free-mail domains, one contact per firm, the suppression list), the warm-up cap, and a send slot per row in the prospect's US time zone on a working day; MX and catch-all are named as not checked here |
 | `npm run text-from-exports` | fill the `text` column of your labelled CSV from the full text your current vendor's exports already carry (Textract lines, Document AI text, Azure content), so the local tiers read without an OCR step of ours |
 | `npm run text-from-images` | fill the `text` column from a folder of images with `--ocr=tesseract` (tesseract.js, Apache-2.0: Linux, macOS, Windows), offline: the language files come from `npm run tessdata -- --prime`, and nothing is fetched at run time |
 | `npm run tessdata` | the two OCR language files (tessdata_fast 4.1.0: eng 4.1 MB, ind 1.1 MB), each pinned by SHA-256: list what is on this machine; `--prime` fetches what is missing, once; `--import <folder>` takes them from a carried folder |
@@ -243,6 +245,16 @@ cheaper one may be, which is what the margin is checked against. A list price is
 first-tier price: above the vendor's monthly tier no annual figure is stated until a price
 is declared.
 
+### Delivering the audit to a client in one command
+
+`npm run livrer -- --client=<slug> --cases=<their.csv> --sorties=<graded outcomes>... --current=<chain> --margin=<points>`
+runs the audit offline on a copy of the inputs and writes one dated folder,
+`livraisons/<client>/<date>/`: the inputs as received, `rapport.md`, the sealed `releve.json`,
+`MANIFESTE.sha256` with the hash of every file, and `note-envoi.md`, a French cover-note draft
+built from the record alone. It sends nothing and overwrites nothing; a folder that already
+holds a delivery is refused. There is no PDF: this repository has no PDF path, and the note
+says so. The flags after `--cases` are `measure:yours`'s own.
+
 ## What else is in here
 
 <!-- figures:documents -->
@@ -261,8 +273,15 @@ is declared.
 | [`vendor-prices.json`](vendor-prices.json) | the list prices per thousand pages the extraction audit falls back on when a chain declares none: read on a date, from the vendors' public pages, marked verified or not; a declared price always wins over them |
 <!-- /figures:documents -->
 
+`npm run lots -- --prospects=<csv>` prepares a cold-email batch offline and sends nothing: it
+closes when the last batch's bounce rate is above the gate the code sets, sets aside bad syntax, role addresses, free-mail domains,
+second contacts of a firm and suppressed addresses, caps the day at the sending address's
+warm-up ramp, and gives each row a send slot on a Tuesday to Thursday morning in the
+prospect's US time zone, never on a federal holiday. MX and catch-all checks need the network
+and are named in the batch as not checked here.
+
 <!-- figures:tests -->
-**867 tests** across 100 files, counted from the sources rather than typed here.
+**878 tests** across 102 files, counted from the sources rather than typed here.
 <!-- /figures:tests -->
 
 Everything runs locally, and that is enforced rather than promised. The one call that could
