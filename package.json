@@ -32,6 +32,7 @@
     "dossier": "node src/dossier.ts",
     "measure:yours": "node src/your-cases.ts",
     "livrer": "node src/livrer.ts",
+    "lots": "node src/lots.ts",
     "grade": "node src/grade.ts",
     "text-from-exports": "node src/text-from-exports.ts",
     "text-from-images": "node src/text-from-images.ts",
