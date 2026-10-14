@@ -85,7 +85,8 @@ test("the floor check says no to every pin below the fix, to a missing file and 
     for (const bad of ["26.5.0\n", "26.4.9\n", "26.0.0", "25.9.9\n", "24.15.3\n", "v26.5.0\n"]) {
       const problem = pin(bad);
       assert.ok(problem?.includes("below"), `${JSON.stringify(bad)} is below the fix and must be refused: ${problem}`);
-      assert.ok(problem?.includes(FIXED_IN) && problem.includes(ADVISORY), "the message names the fixed version and the advisory");
+      const tokens = (problem ?? "").split(/\s+/).map((t) => t.replace(/[.,;:)]+$/, ""));
+      assert.ok(problem?.includes(FIXED_IN) && tokens.some((t) => t === ADVISORY), "the message names the fixed version and the advisory");
     }
     for (const bad of ["26\n", "26.5\n", "lts/*\n", "latest\n", "", "\n", "26.5.x\n", "26.5.1-rc.1\n"]) {
       const problem = pin(bad);
