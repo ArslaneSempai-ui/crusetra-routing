@@ -1,5 +1,5 @@
 /*
- * THE BATCH BEFORE THE SEND, OFFLINE (2026-10-10): candidates 1, 7 and 12 of equipe/AUTOMATISATION.md.
+ * THE BATCH BEFORE THE SEND, OFFLINE (2026-10-10): candidates 1, 7 and 12 of the team's private automation notes.
  *
  * cascade-portes sends; this module decides what may be in the batch and when, with nothing
  * but files: the prospect list, the suppression list, the last bounce report. It refuses to
