@@ -65,3 +65,20 @@ tesseract reads a rendered line of text offline, and fills the text column
 # Same cause: with no language file on the runner, the case that compares the files present with
 # their pins has nothing to compare, and says so.
 the files on this machine, when present, match their pins to the byte
+
+# The private hard-case set (crusetra-jeux, folder crusetra-routing, found through CRUSETRA_JEUX or the
+# sibling clone) lives on no public runner: the 13 cases that read it (5 in cas-ambigus, 1 pre-registration,
+# 7 in hostile-releve) stand aside there and say 'private set absent'. They RUN wherever the set is present.
+la clé ne déclare aucune lecture que le corpus ne contient pas
+aucun cas déclaré par le corpus ne disparaît de la clé
+un cas rendu non ambigu par notre schéma dit pourquoi, et n'en garde qu'une lecture
+toute lecture ajoutée porte sa date et sa raison
+aucune clé de cas dur n'en désigne deux
+le pré-enregistrement de la notation décrit encore le corpus qu'il note
+la page est engendrée du relevé, et le relevé dit quand il a été mesuré
+la comparaison peut échouer — la page suit vraiment les chiffres
+la commande refuse un drapeau inconnu, et --check vérifie la page
+--check REFUSE une page qui a dérivé, et le refuse en s'arrêtant
+un relevé sans scellé est refusé, et le refus nomme ce qui manque
+un relevé modifié après son scellé est refusé, et le refus donne les deux empreintes
+--check REFUSE un relevé descellé, à la commande et pas seulement en fonction
