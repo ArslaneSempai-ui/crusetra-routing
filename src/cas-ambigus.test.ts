@@ -17,6 +17,7 @@ import assert from "node:assert/strict";
 import { readFileSync, existsSync } from "node:fs";
 import { normaliserReponse } from "./tiers.ts";
 import { fileURLToPath } from "node:url";
+import { cheminPrive, jeuPresent, raisonAbsent } from "./jeux.mjs";
 
 type Cle = {
   additionsBeyondTheProse: { case: string; field: string; reading: string; addedOn: string; why: string }[];
@@ -25,7 +26,7 @@ type Cle = {
 };
 
 const CLE = fileURLToPath(new URL("../cas-ambigus.json", import.meta.url));
-const PROSE = fileURLToPath(new URL("../corpus-dur/cas-ambigus.md", import.meta.url));
+const PROSE = cheminPrive("corpus-dur/cas-ambigus.md");
 
 const charger = () => ({
   cle: JSON.parse(readFileSync(CLE, "utf8")) as Cle,
@@ -41,7 +42,7 @@ function bloc(prose: string, id: string): string {
 }
 
 test("la clé ne déclare aucune lecture que le corpus ne contient pas", (t) => {
-  if (!existsSync(CLE) || !existsSync(PROSE)) return t.skip("!existsSync(CLE) || !existsSync(PROSE) — ce cas n'a rien regardé, et il le dit.");
+  if (!existsSync(CLE) || !existsSync(PROSE)) return t.skip(!existsSync(PROSE) ? raisonAbsent("corpus-dur/cas-ambigus.md") : "!existsSync(CLE) — ce cas n'a rien regardé, et il le dit.");
   const { cle, prose } = charger();
   const ajoutees = new Set(cle.additionsBeyondTheProse.map((a) => `${a.case}|${normaliserReponse(a.reading)}`));
 
@@ -63,7 +64,7 @@ test("la clé ne déclare aucune lecture que le corpus ne contient pas", (t) => 
 });
 
 test("aucun cas déclaré par le corpus ne disparaît de la clé", (t) => {
-  if (!existsSync(CLE) || !existsSync(PROSE)) return t.skip("!existsSync(CLE) || !existsSync(PROSE) — ce cas n'a rien regardé, et il le dit.");
+  if (!existsSync(CLE) || !existsSync(PROSE)) return t.skip(!existsSync(PROSE) ? raisonAbsent("corpus-dur/cas-ambigus.md") : "!existsSync(CLE) — ce cas n'a rien regardé, et il le dit.");
   const { cle, prose } = charger();
 
   /* Les cas ramenés en fin de fichier comme « pas assez ambigus » ne comptent pas : le corpus
@@ -81,6 +82,7 @@ test("aucun cas déclaré par le corpus ne disparaît de la clé", (t) => {
 });
 
 test("un cas rendu non ambigu par notre schéma dit pourquoi, et n'en garde qu'une lecture", (t) => {
+  if (!existsSync(PROSE)) return t.skip(raisonAbsent("corpus-dur/cas-ambigus.md"));
   if (!existsSync(CLE)) return t.skip("!existsSync(CLE) — ce cas n'a rien regardé, et il le dit.");
   const { cle } = charger();
   const ramenes = cle.cases.filter((c) => !c.ambiguousHere);
@@ -99,6 +101,7 @@ test("un cas rendu non ambigu par notre schéma dit pourquoi, et n'en garde qu'u
 });
 
 test("toute lecture ajoutée porte sa date et sa raison", (t) => {
+  if (!existsSync(PROSE)) return t.skip(raisonAbsent("corpus-dur/cas-ambigus.md"));
   if (!existsSync(CLE)) return t.skip("!existsSync(CLE) — ce cas n'a rien regardé, et il le dit.");
   const { cle } = charger();
   assert.ok(cle.additionsBeyondTheProse.length > 0, "`cle.additionsBeyondTheProse` est vide : la boucle qui suit ne vérifie rien.");
@@ -122,7 +125,8 @@ test("toute lecture ajoutée porte sa date et sa raison", (t) => {
  * rendait pas d'erreur : elle rendait un chiffre, et cinq champs sur cent soixante-quatre
  * disparaissaient de chaque appariement sans que rien ne le dise.
  */
-test("aucune clé de cas dur n'en désigne deux", async () => {
+test("aucune clé de cas dur n'en désigne deux", async (t) => {
+  if (!jeuPresent("corpus-dur")) return t.skip(raisonAbsent("corpus-dur"));
   const { corpusDur } = await import("./corpus-dur.ts");
   const cas = corpusDur();
   const vues = new Map<string, string>();

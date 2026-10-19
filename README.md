@@ -281,7 +281,7 @@ prospect's US time zone, never on a federal holiday. MX and catch-all checks nee
 and are named in the batch as not checked here.
 
 <!-- figures:tests -->
-**880 tests** across 103 files, counted from the sources rather than typed here.
+**882 tests** across 104 files, counted from the sources rather than typed here.
 <!-- /figures:tests -->
 
 Everything runs locally, and that is enforced rather than promised. The one call that could

@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 import { spawnSync } from "node:child_process";
 import { page, verifierLeScelle, type Releve } from "./hostile.ts";
 import { empreinteDuReleve } from "./measure.ts";
+import { cheminPrive, jeuPresent, raisonAbsent } from "./jeux.mjs";
 
 /*
  * LES TÉMOINS DU RELEVÉ.
@@ -16,10 +17,12 @@ import { empreinteDuReleve } from "./measure.ts";
  * Ce fichier arrive avec le relevé, dans le commit suivant.
  */
 
-const RELEVE = fileURLToPath(new URL("../corpus-hostile.json", import.meta.url));
+const RELEVE = cheminPrive("corpus-hostile.json");
+/** The record is a private set: without it these cases skip with a named reason. */
+const SKIP = jeuPresent("corpus-hostile.json") ? false : raisonAbsent("corpus-hostile.json");
 const PAGE = fileURLToPath(new URL("../CORPUS-HOSTILE.md", import.meta.url));
 
-test("la page est engendrée du relevé, et le relevé dit quand il a été mesuré", () => {
+test("la page est engendrée du relevé, et le relevé dit quand il a été mesuré", { skip: SKIP }, () => {
   assert.ok(existsSync(RELEVE),
     "corpus-hostile.json est absent : lance `npm run hostile`. Ce cas ne doit pas être "
     + "assoupli — une page sans relevé est de la prose non mesurée.");
@@ -31,7 +34,7 @@ test("la page est engendrée du relevé, et le relevé dit quand il a été mesu
     "CORPUS-HOSTILE.md ne correspond plus au relevé : relance `npm run hostile`.");
 });
 
-test("la comparaison peut échouer — la page suit vraiment les chiffres", () => {
+test("la comparaison peut échouer — la page suit vraiment les chiffres", { skip: SKIP }, () => {
   /*
    * LE VERT VIDE ÉVITÉ. Le cas précédent passerait aussi si `page()` rendait une constante.
    * Ici on bouge un résultat et on EXIGE que la page bouge.
@@ -45,7 +48,7 @@ test("la comparaison peut échouer — la page suit vraiment les chiffres", () =
     "la page n'a pas bougé alors qu'un détournement a été ajouté : elle ne lit pas le relevé.");
 });
 
-test("la commande refuse un drapeau inconnu, et --check vérifie la page", { timeout: 120_000 }, () => {
+test("la commande refuse un drapeau inconnu, et --check vérifie la page", { timeout: 120_000, skip: SKIP }, () => {
   const cmd = fileURLToPath(new URL("./hostile.ts", import.meta.url));
   const inconnu = spawnSync("node", [cmd, "--tous"], { encoding: "utf8", timeout: 100_000 });
   assert.equal(inconnu.status, 2,
@@ -55,7 +58,7 @@ test("la commande refuse un drapeau inconnu, et --check vérifie la page", { tim
     `\`--check\` échoue. Sortie :\n${(check.stdout ?? "") + (check.stderr ?? "")}`);
 });
 
-test("--check REFUSE une page qui a dérivé, et le refuse en s'arrêtant", { timeout: 120_000 }, () => {
+test("--check REFUSE une page qui a dérivé, et le refuse en s'arrêtant", { timeout: 120_000, skip: SKIP }, () => {
   /*
    * LE CHEMIN ROUGE DU REFUS, QUE RIEN NE REGARDAIT.
    *
@@ -110,7 +113,7 @@ test("--check REFUSE une page qui a dérivé, et le refuse en s'arrêtant", { ti
  * n'a jamais vu le vert peut refuser tout, et une garde dont on n'a jamais vu le rouge peut
  * n'avoir jamais regardé.
  */
-test("un relevé sans scellé est refusé, et le refus nomme ce qui manque", () => {
+test("un relevé sans scellé est refusé, et le refus nomme ce qui manque", { skip: SKIP }, () => {
   const r = JSON.parse(readFileSync(RELEVE, "utf8")) as Record<string, unknown>;
 
   /* TÉMOIN POSITIF D'ABORD : intact, il passe. Sans lui, une garde qui refuse tout satisferait
@@ -133,7 +136,7 @@ test("un relevé sans scellé est refusé, et le refus nomme ce qui manque", () 
     "un relevé sans commit de provenance doit être refusé : personne ne peut le rejouer.");
 });
 
-test("un relevé modifié après son scellé est refusé, et le refus donne les deux empreintes", () => {
+test("un relevé modifié après son scellé est refusé, et le refus donne les deux empreintes", { skip: SKIP }, () => {
   const r = JSON.parse(readFileSync(RELEVE, "utf8")) as Releve;
 
   /* LE DÉFAUT EXACT QUE CECI FERME : un chiffre changé à la main. On prend le plus tentant —
@@ -151,7 +154,7 @@ test("un relevé modifié après son scellé est refusé, et le refus donne les 
 });
 
 test("--check REFUSE un relevé descellé, à la commande et pas seulement en fonction",
-  { timeout: 120_000 }, () => {
+  { timeout: 120_000, skip: SKIP }, () => {
   /*
    * LE SITE D'APPEL. Les deux cas ci-dessus éprouvent `verifierLeScelle`. Ils resteraient verts
    * si `--check` cessait de l'appeler — c'est-à-dire si le défaut d'origine revenait : une page

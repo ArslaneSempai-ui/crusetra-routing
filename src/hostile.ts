@@ -35,8 +35,9 @@ import { empreinteDuReleve } from "./measure.ts";
 import { isMain, refuserDrapeauxInconnus } from "./cli.ts";
 import { ouvrirJournal, issue } from "./journal.ts";
 import { loadavg } from "node:os";
+import { cheminPrive, jeuPresent, JeuPriveAbsent } from "./jeux.mjs";
 
-const RELEVE = fileURLToPath(new URL("../corpus-hostile.json", import.meta.url));
+const RELEVE = cheminPrive("corpus-hostile.json");
 const PAGE = fileURLToPath(new URL("../CORPUS-HOSTILE.md", import.meta.url));
 
 export type Resultat = {
@@ -337,6 +338,13 @@ async function principal(): Promise<void> {
       process.argv.find((x) => x.startsWith(`--${nom}=`))?.split("=").slice(1).join("=") ?? defaut;
     const releve = chemin("releve", RELEVE);
     const pageLue = chemin("page", PAGE);
+    if (releve === RELEVE && !jeuPresent("corpus-hostile.json")) {
+      /* The record is a private set. Its seal stays public (corpus-hostile.signature.json),
+         so a clean clone says what it cannot check instead of failing or passing silently. */
+      console.log("  corpus-hostile.json: set private, hash recorded (corpus-hostile.signature.json); "
+        + "page not checked against it. Set CRUSETRA_JEUX to check.");
+      return;
+    }
     const r = verifierLeScelle(JSON.parse(readFileSync(releve, "utf8")), releve);
     const attendu = page(r);
     const actuel = readFileSync(pageLue, "utf8");
@@ -352,6 +360,7 @@ async function principal(): Promise<void> {
     return;
   }
 
+  if (!jeuPresent("")) throw new JeuPriveAbsent("corpus-hostile.json (the folder for its record)");
   const racine = fileURLToPath(new URL("..", import.meta.url));
   const commit = execFileSync("git", ["rev-parse", "--short", "HEAD"],
     { cwd: racine, encoding: "utf8" }).trim();
