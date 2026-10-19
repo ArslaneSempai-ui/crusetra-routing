@@ -141,6 +141,14 @@ while read -r ref_local sha_local ref_dist sha_dist; do
     IGNORES="$IGNORES\n  dans $ref_local :\n$(printf '%s\n' "$VUS" | sed 's/^/    /')"
   fi
 done < "$PORTEES"
+
+# Pre-push gate (behind base, README figures, the CI suite). The script path comes from this
+# clone's local git config (`git config crusetra.avantpush <path>`); unset means skip, so CI and
+# other machines are unaffected. A push that only deletes refs has nothing to prove.
+AVANT_PUSH=$(git config --get crusetra.avantpush 2>/dev/null)
+if [ -n "$AVANT_PUSH" ] && { grep -qv '^[^ ]* 0\{40,64\} ' "$PORTEES" || [ ! -s "$PORTEES" ]; }; then
+  node "$AVANT_PUSH" "$(git rev-parse --show-toplevel)" "${AVANT_PUSH_BASE:-origin/main}" || { rm -f "$PORTEES"; exit 1; }
+fi
 rm -f "$PORTEES"
 
 if [ -n "$IGNORES" ]; then
