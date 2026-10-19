@@ -912,6 +912,14 @@ than as irrelevant.
 
 ---
 
+## What is public, what is private
+
+The figures stay public: the numbers and their sources are listed under "Where every number comes from" above, with `CORPUS-HOSTILE.md`, `NOTATION-CAS-DURS.md` and `VALIDATION.md`. The method of each corpus is written in those notes. The only part of the hard corpus left public is `corpus-dur/ECHANTILLON.md`: 5 cases from each of the four files, drawn by a fixed rule written at its top (rank by the SHA-256 of a seed, the file name and the item id), never hand-picked. `corpus-hostile.signature.json` stays, so the seal is public.
+
+The full hard corpus (`corpus-dur/*.md`) and `corpus-hostile.json` are private since this change. Their recorded SHA-256 is in the private folder's `MANIFEST.txt`; for `corpus-hostile.json` it is `ac5cf5eef621bfb42f7c2eb0449a87acbf7a4ec05b3faab03a9791368f8fe315`. Earlier versions remain in the git history of this repository.
+
+A holder of the private folder runs the full tests with `CRUSETRA_JEUX=/path/to/crusetra-jeux/crusetra-routing npm test` (default: `../crusetra-jeux/crusetra-routing`). Without it the tests that read those files are skipped with a named reason.
+
 ## What I would do differently
 
 **Write the held-out split before the first measurement, not after it.** The first run
