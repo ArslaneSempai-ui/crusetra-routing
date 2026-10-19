@@ -27,9 +27,13 @@ import { normaliserReponse, correct } from "./tiers.ts";
 
 import type { Issue } from "./journal.ts";
 import type { Field } from "./corpus.ts";
-import { fileURLToPath } from "node:url";
+import { cheminPrive, jeuPresent, JeuPriveAbsent } from "./jeux.mjs";
 
-export const DOSSIER = fileURLToPath(new URL("../corpus-dur", import.meta.url));
+/** The hard corpus is a private set: see jeux.mjs. Only corpus-dur/ECHANTILLON.md is public. */
+export const DOSSIER = cheminPrive("corpus-dur");
+
+/** True when the private hard corpus can be read. */
+export const corpusDurPresent = (): boolean => jeuPresent("corpus-dur");
 
 /** La colonne « field » du corpus, vers les noms du dépôt. */
 export const CHAMPS: Record<string, Field> = {
@@ -170,6 +174,7 @@ export function lireFichier(fichier: string, dossier: string = DOSSIER): CasDur[
 
 /** Les trente cas tabulaires — malformés et écritures non latines. */
 export function corpusDur(dossier: string = DOSSIER): CasDur[] {
+  if (dossier === DOSSIER && !corpusDurPresent()) throw new JeuPriveAbsent("corpus-dur");
   const fichiers = readdirSync(dossier)
     .filter((n) => n === "documents-malformes.md" || n === "ecritures-non-latines.md")
     .sort();

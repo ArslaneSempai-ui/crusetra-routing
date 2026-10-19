@@ -23,6 +23,7 @@ import { appliquerHypotheses } from "./server.ts";
 import { INVENTORY } from "./inventory.ts";
 import { lireCsv } from "./your-cases.ts";
 import { corpusDur } from "./corpus-dur.ts";
+import { jeuPresent, raisonAbsent } from "./jeux.mjs";
 import { comparerPopulations, plancherDeBruit, longueur, GRAINES_DE_BRUIT } from "./entree.ts";
 import { SEUIL_DE_L_INDUSTRIE, OBSERVATIONS_MINIMALES } from "./psi.ts";
 import { latencesRetenues, readProfiles, empreinteDuReleve, RELEVE_DE_REFERENCE, type Profile, type ProvenanceDuPalier, type Provenance } from "./measure.ts";
@@ -2799,7 +2800,8 @@ test("la notation du corpus dur a été committée AVANT la mesure qu'elle régi
     + `notation — « npm run dur » — et le résultat précédent est rétracté dans retractations.json.`);
 });
 
-test("le pré-enregistrement de la notation décrit encore le corpus qu'il note", () => {
+test("le pré-enregistrement de la notation décrit encore le corpus qu'il note", (t) => {
+  if (!jeuPresent("corpus-dur")) return t.skip(raisonAbsent("corpus-dur"));
   /*
    * UN PRÉ-ENREGISTREMENT PÉRIME SANS BOUGER.
    *
