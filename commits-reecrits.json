@@ -106,6 +106,18 @@
       "timeEvidence": "The rewrite ran on 2026-08-25 with `git filter-branch` over `origin/main..HEAD`, in one pass, mapping each of the 144 commits to exactly one successor in order. The predecessor and successor of both hashes match by subject as well.",
       "limit": "Unlike the earlier entries in this file, this mapping was NOT inferred after the fact: the rewrite was performed deliberately and the correspondence recorded in the same session. The original object still exists locally under the tag `sauvegarde-avant-reecriture`, so a reader on this machine can verify the two trees differ only in that one line. That tag is not pushed, so a reader elsewhere has the subject-line argument and nothing more.",
       "whyTheRewrite": "GitHub's push protection refused the push: the synthetic Stripe key planted as a witness in src/menace.ts matches its detector. The alternative was to register a permanent allowed-secret exception on the account, invisible in the code and in the tests. Rewriting three commits to assemble the witness from fragments was chosen instead."
+    },
+    {
+      "missing": "9cd4fdd",
+      "nowAt": "deab720e44dc8941e151e72c8369445ee406d148",
+      "citedBy": [
+        "ocr.json"
+      ],
+      "establishedBy": "recorded from the old-to-new hash map of the 2026-10-19 history rewrite, not inferred",
+      "contentEvidence": "Both commits carry the identical subject line, \"The reader gives its blocks a height, and a printed line is told by vertical overlap\", and the same author date; the rewrite purged raw outputs from the history and changed hashes, not the code.",
+      "timeEvidence": "Not needed: the correspondence comes from the mapping the rewrite itself produced (old 9cd4fdd546c8708fc652afff09a7aad3c5859471, new deab720e44dc8941e151e72c8369445ee406d148).",
+      "limit": "The old object is no longer reachable from main; a reader elsewhere has the identical subject line and the rewrite's mapping, and nothing more.",
+      "why": "The 2026-10-19 rewrite purged raw outputs from the history. Every commit after the first touched file got a new hash, so a relevé measured before it records a commit that cannot be checked out."
     }
   ]
 }
