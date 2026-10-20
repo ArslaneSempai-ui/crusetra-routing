@@ -198,7 +198,8 @@ export type EntreeDuReleve = {
 /**
  * LES MÊMES MOTS DANS UN AUTRE ORDRE.
  *
- * Mesuré sur la liste SDN de l'OFAC : le nom attendu s'écrit « [name removed] » et l'outil rend l'ordre naturel. 25,7 % d'exactitude, qui se lit comme un modèle
+ * Mesuré sur la liste SDN de l'OFAC : le nom attendu s'écrit « FIXTURE, Alpha Beta
+ * Gamma Delta » et l'outil rend l'ordre naturel. 25,7 % d'exactitude, qui se lit comme un modèle
  * incapable de lire un nom, alors que **les mots trouvés sont les bons**. Nous ne pouvons pas
  * décider quel ordre est le bon — c'est la convention du client — mais nous pouvons cesser de
  * présenter un désaccord de convention comme une extraction ratée.
@@ -221,7 +222,7 @@ export type PresenceChamp = {
    * Cas où elle n'y est pas littéralement, mais où TOUS ses mots y sont.
    *
    * C'est la deuxième forme rencontrée sur l'OFAC, et elle n'appelle pas le même remède que
-   * la première : « [name removed] » n'est pas dans le texte, et
+   * la première : « FIXTURE, Alpha Beta Gamma Delta » n'est pas dans le texte, et
    * pourtant chacun de ses mots y est. La valeur est là, écrite autrement. Confondre les
    * deux ferait accuser un corpus sain d'être vide.
    */

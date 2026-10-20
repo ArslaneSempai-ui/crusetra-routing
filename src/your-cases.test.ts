@@ -903,7 +903,8 @@ test("les règles du client sont bornées, et évaluées avant qu'un modèle soi
  *
  * Une session pair a passé la liste SDN de l'OFAC dans l'outil, 300 cas. Deux des cinq
  * champs ne mesuraient pas l'outil : l'adresse venait d'un fichier séparé et n'était dans
- * le texte que 40 fois sur 300, et le nom attendu s'écrivait « [name removed] » là où l'outil rend l'ordre naturel. 0,7 % et 25,7 % — deux chiffres qui
+ * le texte que 40 fois sur 300, et le nom attendu s'écrivait « FIXTURE, Alpha
+ * Beta Gamma Delta » là où l'outil rend l'ordre naturel. 0,7 % et 25,7 % — deux chiffres qui
  * se lisent comme des échecs d'extraction et qui mesuraient un corpus.
  *
  * `measure:yours` demande une vérité de référence EN SUPPOSANT QUE LE CLIENT L'A. Ces deux
@@ -914,7 +915,7 @@ test("les règles du client sont bornées, et évaluées avant qu'un modèle soi
 test("la vérité attendue est cherchée dans le texte avant qu'un modèle soit chargé", async () => {
   const { presenceDeLaVerite } = await import("./your-cases.ts");
   const cas = [
-    { id: "1", text: "Abboud Al-Zomor, born 3 May 1990.", truth: { nom: "AL-ZOMOR, Abboud", naissance: "3 May 1990", adresse: "12 Rue des Acacias" } },
+    { id: "1", text: "Alpha Fixture, born 3 May 1990.", truth: { nom: "FIXTURE, Alpha", naissance: "3 May 1990", adresse: "12 Rue des Acacias" } },
     { id: "2", text: "Maria Garcia, born 1 June 1988.", truth: { nom: "GARCIA, Maria", naissance: "1 June 1988", adresse: "" } },
   ] as never as Parameters<typeof presenceDeLaVerite>[0];
 
@@ -924,7 +925,7 @@ test("la vérité attendue est cherchée dans le texte avant qu'un modèle soit 
   assert.equal(par["naissance"]!.litteral, 2, "écrite telle quelle dans le texte.");
   assert.equal(par["naissance"]!.reordonne, 0);
 
-  assert.equal(par["nom"]!.litteral, 0, "« AL-ZOMOR, Abboud » n'est pas dans le texte…");
+  assert.equal(par["nom"]!.litteral, 0, "« FIXTURE, Alpha » n'est pas dans le texte…");
   assert.equal(par["nom"]!.reordonne, 2, "…mais tous ses mots y sont : elle est là, écrite autrement.");
 
   assert.equal(par["adresse"]!.litteral, 0, "celle-là n'y est vraiment pas.");
@@ -956,7 +957,7 @@ test("un champ absent du texte et un champ réordonné n'appellent pas le même 
 test("les mêmes mots dans un autre ordre ne sont pas une extraction ratée", async () => {
   const { memesMots } = await import("./your-cases.ts");
 
-  assert.equal(memesMots("[name removed]", "[name removed]"), true);
+  assert.equal(memesMots("Alpha Beta Gamma Delta Fixture", "FIXTURE, Alpha Beta Gamma Delta"), true);
   assert.equal(memesMots("Maria Garcia", "Garcia Maria"), true);
   assert.equal(memesMots("Maria Garcia", "Maria Lopez"), false, "un mot différent reste faux.");
   assert.equal(memesMots("Maria Garcia", "Maria"), false, "un mot en moins reste faux.");
