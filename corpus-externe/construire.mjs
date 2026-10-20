@@ -17,6 +17,7 @@
  */
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { parse } from "node:path";
+import { sansIdentite } from "./sans-identite.mjs";
 
 /*
  * ─── OÙ SONT LES FICHIERS DE L'OFAC, ET POURQUOI CE N'EST PLUS ÉCRIT EN DUR ───
@@ -120,8 +121,9 @@ const sansNoms = (r) => r
 /* Le texte est ce qu'un système d'accueil verrait : le nom, puis la prose officielle. */
 const ech = (v) => `"${String(v).replace(/"/g, '""')}"`;
 const lignes = ["id,text,birth,document,country"];
-for (const c of cas.slice(0, 300)) {
-  lignes.push([c.id, ech(`${JETON} — ${sansNoms(c.remarques)}`), ech(c.birth), ech(c.document), ech(c.country)].join(","));
+for (const [rang, c] of cas.slice(0, 300).entries()) {
+  const r = sansIdentite({ id: c.id, text: `${JETON} — ${sansNoms(c.remarques)}`, birth: c.birth, document: c.document, country: c.country }, rang);
+  lignes.push([r.id, ech(r.text), ech(r.birth), ech(r.document), ech(r.country)].join(","));
 }
 writeFileSync(`${D}/ofac-300.csv`, lignes.join("\n") + "\n");
 console.log(`  écrit : ofac-300.csv · ${lignes.length - 1} cas`);
