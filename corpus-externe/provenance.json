@@ -32,5 +32,6 @@
     "country"
   ],
   "verificationALaMain": "8 cas sur 8 relus : chaque valeur attendue presente mot pour mot dans le texte",
-  "premiereVersionFausse": "Le premier analyseur ne cherchait que Passport et National ID sur douze types presents, et ratait un passeport contenant une espace. Faux sur 3 cas sur 6, vu en relisant a la main."
+  "premiereVersionFausse": "Le premier analyseur ne cherchait que Passport et National ID sur douze types presents, et ratait un passeport contenant une espace. Faux sur 3 cas sur 6, vu en relisant a la main.",
+  "sansIdentite": "Since 2026-10-21 no record points back to a real person: the name is one fixed token, the id a case number, and every date of birth, place of birth and identity number is a random value of the same shape (corpus-externe/sans-identite.mjs), applied alike to the text and to the expected answer. Measured on every record: the birth, document and country rates and their n are identical before and after."
 }
