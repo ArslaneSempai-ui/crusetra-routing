@@ -5,7 +5,7 @@
   "entries": [
     {
       "missing": "a01216bff39153040bfa57e4287df26ceda7150c",
-      "nowAt": "22a32de0aec3412e2a01d308093624aad87d8817",
+      "nowAt": "1b0bf79142063953f9f8e49e0ade57405b6186d3",
       "citedBy": [
         "survivants.json"
       ],
@@ -13,11 +13,14 @@
       "contentEvidence": "Same subject, rewritten by the 27 Aug 2026 removal of two empty commits; zero-line diff against the pre-rewrite branch, so both name the same tree.",
       "timeEvidence": "Not needed: the mapping was written down while both sides existed.",
       "limit": "The old object survives only in this working copy's backup branches; a clone will not find it.",
-      "whyTheRewrite": "Two empty commits, each with a message describing a fix that existed nowhere, were removed before publishing."
+      "whyTheRewrite": "Two empty commits, each with a message describing a fix that existed nowhere, were removed before publishing. Rewritten again: Dates of birth, places of birth, identity numbers and OFAC uids of the external corpus were replaced by values of the same shape in the whole history of the public repository (decision of 2026-10-21).",
+      "previouslyAt": [
+        "22a32de0aec3412e2a01d308093624aad87d8817"
+      ]
     },
     {
       "missing": "45146e5",
-      "nowAt": "6cffc40d39064360eded55f396b7e8631946fad5",
+      "nowAt": "b8f803c4c845fb31c64af14a95456d14a073916f",
       "citedBy": [
         "menace-historique.json"
       ],
@@ -25,11 +28,14 @@
       "contentEvidence": "Same subject, rewritten by the 27 Aug 2026 removal of two empty commits; git diff against the pre-rewrite branch returned zero lines across the whole branch, so both name the same tree.",
       "timeEvidence": "Not needed: the mapping was written down while both sides existed.",
       "limit": "The old object survives only in this working copy's backup branches; a clone will not find it.",
-      "whyTheRewrite": "Two empty commits, each with a message describing a fix that existed nowhere, were removed before publishing."
+      "whyTheRewrite": "Two empty commits, each with a message describing a fix that existed nowhere, were removed before publishing. Rewritten again: Dates of birth, places of birth, identity numbers and OFAC uids of the external corpus were replaced by values of the same shape in the whole history of the public repository (decision of 2026-10-21).",
+      "previouslyAt": [
+        "6cffc40d39064360eded55f396b7e8631946fad5"
+      ]
     },
     {
       "missing": "0345143",
-      "nowAt": "7545804248da6571372d7c1e2b7527d9d58b6b7b",
+      "nowAt": "313565433e96271d5b51c71e50ff3f1dbb6f1bdc",
       "citedBy": [
         "corpus-hostile.json"
       ],
@@ -37,11 +43,14 @@
       "contentEvidence": "Same tree by construction: the 27 Aug 2026 rewrite removed two empty commits and changed no file — git diff against the pre-rewrite branch returned zero lines. empty chain removed; nearest surviving ancestor's rewrite (2 hop(s), same tree).",
       "timeEvidence": "Not needed: the mapping was written down while both sides existed.",
       "limit": "The old object survives only in this working copy's backup branches; a clone will not find it — which is why this entry exists.",
-      "whyTheRewrite": "Two empty commits, each with a message describing a fix that existed nowhere, were removed before publishing. Their messages read as accomplished facts; the history a buyer audits should not."
+      "whyTheRewrite": "Two empty commits, each with a message describing a fix that existed nowhere, were removed before publishing. Their messages read as accomplished facts; the history a buyer audits should not. Rewritten again: Dates of birth, places of birth, identity numbers and OFAC uids of the external corpus were replaced by values of the same shape in the whole history of the public repository (decision of 2026-10-21).",
+      "previouslyAt": [
+        "7545804248da6571372d7c1e2b7527d9d58b6b7b"
+      ]
     },
     {
       "missing": "679bf752e323da600fe1ab8f3b6ae89066e406a0",
-      "nowAt": "76967147d059b54e5cf2b380617ecdc89ccc95d5",
+      "nowAt": "18deac4e6b1dd5d9999b91a107f12c232623fce9",
       "citedBy": [
         "survivants.json"
       ],
@@ -49,7 +58,10 @@
       "contentEvidence": "The two commits name the SAME TREE. The rewrite changed authorship only: `git diff sauvegarde-avant-signatures HEAD` returned zero lines across the whole branch, and the 37 subjects map one to one between the old branch and the new. This entry is the only one in this file that did not have to be reasoned out afterwards.",
       "timeEvidence": "Not needed here, and saying so matters: the other entries in this file infer a successor from timing because the mapping was lost. This one was written down while it was still known.",
       "limit": "The old object is still reachable through `refs/original/refs/heads/main` and the branch `sauvegarde-avant-signatures` in this working copy, but neither travels with a clone. A reader who fetches this repository will not find 679bf75 at all — which is exactly why the mapping is written here rather than left to a reflog.",
-      "whyTheRewrite": "Eleven commits were authored `a <a@a>` and two `t <t@t>`: a worktree does not own its git configuration, so `git -C <worktree> config user.name` wrote into the shared .git/config and signed everyone's work. Nothing had been pushed, so the public history never carried it."
+      "whyTheRewrite": "Eleven commits were authored `a <a@a>` and two `t <t@t>`: a worktree does not own its git configuration, so `git -C <worktree> config user.name` wrote into the shared .git/config and signed everyone's work. Nothing had been pushed, so the public history never carried it. Rewritten again: Dates of birth, places of birth, identity numbers and OFAC uids of the external corpus were replaced by values of the same shape in the whole history of the public repository (decision of 2026-10-21).",
+      "previouslyAt": [
+        "76967147d059b54e5cf2b380617ecdc89ccc95d5"
+      ]
     },
     {
       "missing": "64bdacf",
@@ -109,7 +121,7 @@
     },
     {
       "missing": "9cd4fdd",
-      "nowAt": "d03717838acd97b9500fe299d27dc6b68af97d48",
+      "nowAt": "0ed22050b431e4633b57c608ac24e58c5059a5fc",
       "citedBy": [
         "ocr.json"
       ],
@@ -117,11 +129,15 @@
       "contentEvidence": "Both commits carry the identical subject line, \"The reader gives its blocks a height, and a printed line is told by vertical overlap\", and the same author date; the rewrite purged raw outputs from the history and changed hashes, not the code.",
       "timeEvidence": "Not needed: the correspondence comes from the mapping the rewrite itself produced (old 9cd4fdd546c8708fc652afff09a7aad3c5859471, new deab720e44dc8941e151e72c8369445ee406d148).",
       "limit": "The old object is no longer reachable from main; a reader elsewhere has the identical subject line and the rewrite's mapping, and nothing more.",
-      "why": "The 2026-10-19 rewrite purged raw outputs from the history. Every commit after the first touched file got a new hash, so a relevé measured before it records a commit that cannot be checked out."
+      "why": "The 2026-10-19 rewrite purged raw outputs from the history. Every commit after the first touched file got a new hash, so a relevé measured before it records a commit that cannot be checked out.",
+      "previouslyAt": [
+        "d03717838acd97b9500fe299d27dc6b68af97d48"
+      ],
+      "whyTheRewrite": " Rewritten again: Dates of birth, places of birth, identity numbers and OFAC uids of the external corpus were replaced by values of the same shape in the whole history of the public repository (decision of 2026-10-21)."
     },
     {
       "missing": "0a870475dbc4506b6d9e59d69ace3369f9cf118f",
-      "nowAt": "f4343afcfcbcea99edb11bf3d0aa61d2c4941001",
+      "nowAt": "950855c1309424575b1e3501e07e64c8a24083bd",
       "citedBy": [
         "dur.json"
       ],
@@ -129,7 +145,10 @@
       "contentEvidence": "git filter-repo commit-map written while both sides existed: the same commit with the same tree apart from the removed individuals' names.",
       "timeEvidence": "Not needed: the mapping was written down while both sides existed.",
       "limit": "The old object survives only in the pre-rewrite clone, not in the public repository.",
-      "whyTheRewrite": "The names of listed individuals were erased from the whole history of the public repository (decision of 2026-10-20)."
+      "whyTheRewrite": "The names of listed individuals were erased from the whole history of the public repository (decision of 2026-10-20). Rewritten again: Dates of birth, places of birth, identity numbers and OFAC uids of the external corpus were replaced by values of the same shape in the whole history of the public repository (decision of 2026-10-21).",
+      "previouslyAt": [
+        "f4343afcfcbcea99edb11bf3d0aa61d2c4941001"
+      ]
     },
     {
       "missing": "10ef1b7890cf3eb1948bcbb4fce8f930a560c9bf",
@@ -145,7 +164,7 @@
     },
     {
       "missing": "469223fac2a13b82f89429c00a8271f116c44be5",
-      "nowAt": "22a32de0aec3412e2a01d308093624aad87d8817",
+      "nowAt": "1b0bf79142063953f9f8e49e0ade57405b6186d3",
       "citedBy": [
         "survivants.json"
       ],
@@ -153,11 +172,14 @@
       "contentEvidence": "git filter-repo commit-map written while both sides existed: the same commit with the same tree apart from the removed individuals' names.",
       "timeEvidence": "Not needed: the mapping was written down while both sides existed.",
       "limit": "The old object survives only in the pre-rewrite clone, not in the public repository.",
-      "whyTheRewrite": "The names of listed individuals were erased from the whole history of the public repository (decision of 2026-10-20)."
+      "whyTheRewrite": "The names of listed individuals were erased from the whole history of the public repository (decision of 2026-10-20). Rewritten again: Dates of birth, places of birth, identity numbers and OFAC uids of the external corpus were replaced by values of the same shape in the whole history of the public repository (decision of 2026-10-21).",
+      "previouslyAt": [
+        "22a32de0aec3412e2a01d308093624aad87d8817"
+      ]
     },
     {
       "missing": "7e829501a840a9ff7a53c96955260b2e29c78773",
-      "nowAt": "7b1a256bed4596bf37441257e13064bcc4981571",
+      "nowAt": "c1b877bc4dad2be37cfb89719cc68a9f1d6e4a23",
       "citedBy": [
         "examples/cord-receipts/cord-labels-grouped-measured.json"
       ],
@@ -165,11 +187,14 @@
       "contentEvidence": "git filter-repo commit-map written while both sides existed: the same commit with the same tree apart from the removed individuals' names.",
       "timeEvidence": "Not needed: the mapping was written down while both sides existed.",
       "limit": "The old object survives only in the pre-rewrite clone, not in the public repository.",
-      "whyTheRewrite": "The names of listed individuals were erased from the whole history of the public repository (decision of 2026-10-20)."
+      "whyTheRewrite": "The names of listed individuals were erased from the whole history of the public repository (decision of 2026-10-20). Rewritten again: Dates of birth, places of birth, identity numbers and OFAC uids of the external corpus were replaced by values of the same shape in the whole history of the public repository (decision of 2026-10-21).",
+      "previouslyAt": [
+        "7b1a256bed4596bf37441257e13064bcc4981571"
+      ]
     },
     {
       "missing": "ee181700eea3169bb553f25c7517275fb4584e9e",
-      "nowAt": "c64622e8d80a177e6bbcd228030ed39a43022b13",
+      "nowAt": "a869e256254d837d44ce7e109db775736f63b95f",
       "citedBy": [
         "vendor-prices.json"
       ],
@@ -177,11 +202,14 @@
       "contentEvidence": "git filter-repo commit-map written while both sides existed: the same commit with the same tree apart from the removed individuals' names.",
       "timeEvidence": "Not needed: the mapping was written down while both sides existed.",
       "limit": "The old object survives only in the pre-rewrite clone, not in the public repository.",
-      "whyTheRewrite": "The names of listed individuals were erased from the whole history of the public repository (decision of 2026-10-20)."
+      "whyTheRewrite": "The names of listed individuals were erased from the whole history of the public repository (decision of 2026-10-20). Rewritten again: Dates of birth, places of birth, identity numbers and OFAC uids of the external corpus were replaced by values of the same shape in the whole history of the public repository (decision of 2026-10-21).",
+      "previouslyAt": [
+        "c64622e8d80a177e6bbcd228030ed39a43022b13"
+      ]
     },
     {
       "missing": "0a87047",
-      "nowAt": "f4343afcfcbcea99edb11bf3d0aa61d2c4941001",
+      "nowAt": "950855c1309424575b1e3501e07e64c8a24083bd",
       "citedBy": [
         "dur.json"
       ],
@@ -189,11 +217,14 @@
       "contentEvidence": "git filter-repo commit-map written while both sides existed: the same commit with the same tree apart from the removed individuals' names.",
       "timeEvidence": "Not needed: the mapping was written down while both sides existed.",
       "limit": "The old object survives only in the pre-rewrite clone, not in the public repository.",
-      "whyTheRewrite": "The names of listed individuals were erased from the whole history of the public repository (decision of 2026-10-20)."
+      "whyTheRewrite": "The names of listed individuals were erased from the whole history of the public repository (decision of 2026-10-20). Rewritten again: Dates of birth, places of birth, identity numbers and OFAC uids of the external corpus were replaced by values of the same shape in the whole history of the public repository (decision of 2026-10-21).",
+      "previouslyAt": [
+        "f4343afcfcbcea99edb11bf3d0aa61d2c4941001"
+      ]
     },
     {
       "missing": "ee18170",
-      "nowAt": "c64622e8d80a177e6bbcd228030ed39a43022b13",
+      "nowAt": "a869e256254d837d44ce7e109db775736f63b95f",
       "citedBy": [
         "vendor-prices.json"
       ],
@@ -201,7 +232,10 @@
       "contentEvidence": "git filter-repo commit-map written while both sides existed: the same commit with the same tree apart from the removed individuals' names.",
       "timeEvidence": "Not needed: the mapping was written down while both sides existed.",
       "limit": "The old object survives only in the pre-rewrite clone, not in the public repository.",
-      "whyTheRewrite": "The names of listed individuals were erased from the whole history of the public repository (decision of 2026-10-20)."
+      "whyTheRewrite": "The names of listed individuals were erased from the whole history of the public repository (decision of 2026-10-20). Rewritten again: Dates of birth, places of birth, identity numbers and OFAC uids of the external corpus were replaced by values of the same shape in the whole history of the public repository (decision of 2026-10-21).",
+      "previouslyAt": [
+        "c64622e8d80a177e6bbcd228030ed39a43022b13"
+      ]
     }
   ]
 }
