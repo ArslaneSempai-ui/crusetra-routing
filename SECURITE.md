@@ -38,10 +38,10 @@ in any file.
 
 ## Secrets in the history
 
-**0 undeclared secrets reachable from `HEAD`**: swept on 2026-10-20, sealed at `9ca7916`.
+**0 undeclared secrets reachable from `HEAD`**: swept on 2026-10-20, sealed at `dead4b5`.
 
-**Two denominators, because they do not measure the same thing.** The sweep read 741 commits:
-`--all`, every ref this machine carries. Of those, 549 are reachable from `HEAD`;
+**Two denominators, because they do not measure the same thing.** The sweep read 744 commits:
+`--all`, every ref this machine carries. Of those, 552 are reachable from `HEAD`;
 the remaining 192 sit in local backup branches and in the `refs/original/` a history
 rewrite leaves behind, which nobody clones. This page used to print the first number under the
 words "in the published history", which invited you to read it as the count you can clone; it
