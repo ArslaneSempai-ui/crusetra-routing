@@ -5,7 +5,7 @@
   "entries": [
     {
       "missing": "a01216bff39153040bfa57e4287df26ceda7150c",
-      "nowAt": "469223fac2a13b82f89429c00a8271f116c44be5",
+      "nowAt": "22a32de0aec3412e2a01d308093624aad87d8817",
       "citedBy": [
         "survivants.json"
       ],
@@ -17,7 +17,7 @@
     },
     {
       "missing": "45146e5",
-      "nowAt": "79e88bcbfa1decf3821d0b506da515d4974ccc19",
+      "nowAt": "6cffc40d39064360eded55f396b7e8631946fad5",
       "citedBy": [
         "menace-historique.json"
       ],
@@ -29,7 +29,7 @@
     },
     {
       "missing": "0345143",
-      "nowAt": "8bca350d9759ee46405080f41a2712dd249960c5",
+      "nowAt": "7545804248da6571372d7c1e2b7527d9d58b6b7b",
       "citedBy": [
         "corpus-hostile.json"
       ],
@@ -41,7 +41,7 @@
     },
     {
       "missing": "679bf752e323da600fe1ab8f3b6ae89066e406a0",
-      "nowAt": "b916b9bc01dfcf5aa382b572577205a3b2412ffd",
+      "nowAt": "76967147d059b54e5cf2b380617ecdc89ccc95d5",
       "citedBy": [
         "survivants.json"
       ],
@@ -67,7 +67,7 @@
     },
     {
       "missing": "4b4f2b4",
-      "nowAt": "9494259",
+      "nowAt": "9494259c63d856125000c0e73c8d78156b80554b",
       "citedBy": [
         "document.json"
       ],
@@ -77,7 +77,7 @@
     },
     {
       "missing": "5474cee",
-      "nowAt": "4c5b64e",
+      "nowAt": "4c5b64e240fdd898d948cef9b675efec6600efef",
       "citedBy": [
         "dur.json"
       ],
@@ -87,7 +87,7 @@
     },
     {
       "missing": "075f0c9",
-      "nowAt": "3386da1",
+      "nowAt": "3386da1de311c71f79856edf8cccdae2c94ec703",
       "citedBy": [
         "menace-historique.json"
       ],
@@ -97,7 +97,7 @@
     },
     {
       "missing": "9399e0e",
-      "nowAt": "38da6e0",
+      "nowAt": "38da6e0460f6e0e06eb7f9eda2435f2d5bd177b4",
       "citedBy": [
         "egress.json"
       ],
@@ -109,7 +109,7 @@
     },
     {
       "missing": "9cd4fdd",
-      "nowAt": "deab720e44dc8941e151e72c8369445ee406d148",
+      "nowAt": "d03717838acd97b9500fe299d27dc6b68af97d48",
       "citedBy": [
         "ocr.json"
       ],
@@ -118,6 +118,90 @@
       "timeEvidence": "Not needed: the correspondence comes from the mapping the rewrite itself produced (old 9cd4fdd546c8708fc652afff09a7aad3c5859471, new deab720e44dc8941e151e72c8369445ee406d148).",
       "limit": "The old object is no longer reachable from main; a reader elsewhere has the identical subject line and the rewrite's mapping, and nothing more.",
       "why": "The 2026-10-19 rewrite purged raw outputs from the history. Every commit after the first touched file got a new hash, so a relevé measured before it records a commit that cannot be checked out."
+    },
+    {
+      "missing": "0a870475dbc4506b6d9e59d69ace3369f9cf118f",
+      "nowAt": "f4343afcfcbcea99edb11bf3d0aa61d2c4941001",
+      "citedBy": [
+        "dur.json"
+      ],
+      "establishedBy": "recorded at rewrite time, not inferred",
+      "contentEvidence": "git filter-repo commit-map written while both sides existed: the same commit with the same tree apart from the removed individuals' names.",
+      "timeEvidence": "Not needed: the mapping was written down while both sides existed.",
+      "limit": "The old object survives only in the pre-rewrite clone, not in the public repository.",
+      "whyTheRewrite": "The names of listed individuals were erased from the whole history of the public repository (decision of 2026-10-20)."
+    },
+    {
+      "missing": "10ef1b7890cf3eb1948bcbb4fce8f930a560c9bf",
+      "nowAt": "1f03b172c6093d8766e09a63012b440cba2b5f66",
+      "citedBy": [
+        "examples/cord-receipts/cord-labels-grouped-tesseract-measured.json"
+      ],
+      "establishedBy": "recorded at rewrite time, not inferred",
+      "contentEvidence": "git filter-repo commit-map written while both sides existed: the same commit with the same tree apart from the removed individuals' names.",
+      "timeEvidence": "Not needed: the mapping was written down while both sides existed.",
+      "limit": "The old object survives only in the pre-rewrite clone, not in the public repository.",
+      "whyTheRewrite": "The names of listed individuals were erased from the whole history of the public repository (decision of 2026-10-20)."
+    },
+    {
+      "missing": "469223fac2a13b82f89429c00a8271f116c44be5",
+      "nowAt": "22a32de0aec3412e2a01d308093624aad87d8817",
+      "citedBy": [
+        "survivants.json"
+      ],
+      "establishedBy": "recorded at rewrite time, not inferred",
+      "contentEvidence": "git filter-repo commit-map written while both sides existed: the same commit with the same tree apart from the removed individuals' names.",
+      "timeEvidence": "Not needed: the mapping was written down while both sides existed.",
+      "limit": "The old object survives only in the pre-rewrite clone, not in the public repository.",
+      "whyTheRewrite": "The names of listed individuals were erased from the whole history of the public repository (decision of 2026-10-20)."
+    },
+    {
+      "missing": "7e829501a840a9ff7a53c96955260b2e29c78773",
+      "nowAt": "7b1a256bed4596bf37441257e13064bcc4981571",
+      "citedBy": [
+        "examples/cord-receipts/cord-labels-grouped-measured.json"
+      ],
+      "establishedBy": "recorded at rewrite time, not inferred",
+      "contentEvidence": "git filter-repo commit-map written while both sides existed: the same commit with the same tree apart from the removed individuals' names.",
+      "timeEvidence": "Not needed: the mapping was written down while both sides existed.",
+      "limit": "The old object survives only in the pre-rewrite clone, not in the public repository.",
+      "whyTheRewrite": "The names of listed individuals were erased from the whole history of the public repository (decision of 2026-10-20)."
+    },
+    {
+      "missing": "ee181700eea3169bb553f25c7517275fb4584e9e",
+      "nowAt": "c64622e8d80a177e6bbcd228030ed39a43022b13",
+      "citedBy": [
+        "vendor-prices.json"
+      ],
+      "establishedBy": "recorded at rewrite time, not inferred",
+      "contentEvidence": "git filter-repo commit-map written while both sides existed: the same commit with the same tree apart from the removed individuals' names.",
+      "timeEvidence": "Not needed: the mapping was written down while both sides existed.",
+      "limit": "The old object survives only in the pre-rewrite clone, not in the public repository.",
+      "whyTheRewrite": "The names of listed individuals were erased from the whole history of the public repository (decision of 2026-10-20)."
+    },
+    {
+      "missing": "0a87047",
+      "nowAt": "f4343afcfcbcea99edb11bf3d0aa61d2c4941001",
+      "citedBy": [
+        "dur.json"
+      ],
+      "establishedBy": "recorded at rewrite time, not inferred",
+      "contentEvidence": "git filter-repo commit-map written while both sides existed: the same commit with the same tree apart from the removed individuals' names.",
+      "timeEvidence": "Not needed: the mapping was written down while both sides existed.",
+      "limit": "The old object survives only in the pre-rewrite clone, not in the public repository.",
+      "whyTheRewrite": "The names of listed individuals were erased from the whole history of the public repository (decision of 2026-10-20)."
+    },
+    {
+      "missing": "ee18170",
+      "nowAt": "c64622e8d80a177e6bbcd228030ed39a43022b13",
+      "citedBy": [
+        "vendor-prices.json"
+      ],
+      "establishedBy": "recorded at rewrite time, not inferred",
+      "contentEvidence": "git filter-repo commit-map written while both sides existed: the same commit with the same tree apart from the removed individuals' names.",
+      "timeEvidence": "Not needed: the mapping was written down while both sides existed.",
+      "limit": "The old object survives only in the pre-rewrite clone, not in the public repository.",
+      "whyTheRewrite": "The names of listed individuals were erased from the whole history of the public repository (decision of 2026-10-20)."
     }
   ]
 }
