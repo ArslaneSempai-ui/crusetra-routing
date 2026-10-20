@@ -108,11 +108,20 @@ for (const l of sdn) {
 }
 console.log(`  ${cas.length} cases kept out of ${sdn.length} lines · at least 3 of 4 fields present`);
 
+/* NO NATURAL PERSON'S NAME IS PUBLISHED (decision of 2026-10-20). The corpus measures where a date, a document and a
+   country sit in the text; none of that needs the name. The name, its a.k.a. forms and the relatives named in the prose
+   become one fixed token. Measured on the 300 records: birth, document and country are identical with and without it. */
+const JETON = "[name removed]";
+const sansNoms = (r) => r
+  .replace(/\b([afn])\.k\.a\. '[^']*'/g, `$1.k.a. '${JETON}'`)
+  .replace(/Linked To: [A-Z][A-Z'’ -]+, [A-Z][a-zA-Z' -]+/g, `Linked To: ${JETON}`)
+  .replace(/\b(son|daughter|wife|husband|brother|sister|father|mother) of [^;.]+/gi, `$1 of ${JETON}`);
+
 /* Le texte est ce qu'un système d'accueil verrait : le nom, puis la prose officielle. */
 const ech = (v) => `"${String(v).replace(/"/g, '""')}"`;
-const lignes = ["id,text,name,birth,document,country,address"];
+const lignes = ["id,text,birth,document,country"];
 for (const c of cas.slice(0, 300)) {
-  lignes.push([c.id, ech(`${c.nom} — ${c.remarques}`), ech(c.nom), ech(c.birth), ech(c.document), ech(c.country), ech(c.address)].join(","));
+  lignes.push([c.id, ech(`${JETON} — ${sansNoms(c.remarques)}`), ech(c.birth), ech(c.document), ech(c.country)].join(","));
 }
 writeFileSync(`${D}/ofac-300.csv`, lignes.join("\n") + "\n");
 console.log(`  écrit : ofac-300.csv · ${lignes.length - 1} cas`);
