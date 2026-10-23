@@ -35,17 +35,18 @@
     },
     {
       "missing": "0345143",
-      "nowAt": "313565433e96271d5b51c71e50ff3f1dbb6f1bdc",
+      "nowAt": "d088e2cdbc45c2453c0fbd5eea608a4b760a1497",
       "citedBy": [
         "corpus-hostile.json"
       ],
-      "establishedBy": "recorded at rewrite time, not inferred",
-      "contentEvidence": "Same tree by construction: the 27 Aug 2026 rewrite removed two empty commits and changed no file — git diff against the pre-rewrite branch returned zero lines. empty chain removed; nearest surviving ancestor's rewrite (2 hop(s), same tree).",
+      "establishedBy": "checked against the old objects, which still exist on the machine that ran the rewrites; the 2026-10-21 rewrite left no map in the repository",
+      "contentEvidence": "Same tree by construction: the 27 Aug 2026 rewrite removed two empty commits and changed no file — git diff against the pre-rewrite branch returned zero lines. empty chain removed; nearest surviving ancestor's rewrite (2 hop(s), same tree). 2026-10-21 hop: the nearest surviving ancestor of 0345143 is ebe945f (\"An English filter is not a filter, and the hostile record it was measured on\", 2026-08-25 21:52:32 +0300). Its successor d088e2cdbc45c2453c0fbd5eea608a4b760a1497 carries the same subject and the same author and committer date, and is the only commit of the current history with that subject. `git diff --stat 0345143 d088e2c` and `git diff --stat ebe945f d088e2c` print the same six files (the 0345143 tree equals the ebe945f tree), and the differences are the replacement of identity values by placeholders (decision of 2026-10-21), for instance a comment naming a model and a comment quoting two document numbers.",
       "timeEvidence": "Not needed: the mapping was written down while both sides existed.",
       "limit": "The old object survives only in this working copy's backup branches; a clone will not find it — which is why this entry exists.",
       "whyTheRewrite": "Two empty commits, each with a message describing a fix that existed nowhere, were removed before publishing. Their messages read as accomplished facts; the history a buyer audits should not. Rewritten again: Dates of birth, places of birth, identity numbers and OFAC uids of the external corpus were replaced by values of the same shape in the whole history of the public repository (decision of 2026-10-21).",
       "previouslyAt": [
-        "7545804248da6571372d7c1e2b7527d9d58b6b7b"
+        "7545804248da6571372d7c1e2b7527d9d58b6b7b",
+        "313565433e96271d5b51c71e50ff3f1dbb6f1bdc"
       ]
     },
     {
@@ -65,7 +66,7 @@
     },
     {
       "missing": "64bdacf",
-      "nowAt": "19d19e8",
+      "nowAt": "0f510b5244c0df60ba20873572ac36485af16a15",
       "citedBy": [
         "data/profiles.json",
         "landing.json",
@@ -73,19 +74,25 @@
         "profiles-2026-08-20-coeur-rendu.json"
       ],
       "establishedBy": "inferred, not recorded",
-      "contentEvidence": "The relevé records `charge.externalBefore` for every tier. `19d19e8` introduces that field to src/measure.ts (4 occurrences); its predecessor `c199da4` has none. The relevé cannot have been produced by any earlier commit.",
+      "contentEvidence": "The relevé records `charge.externalBefore` for every tier. `19d19e8` introduces that field to src/measure.ts (4 occurrences); its predecessor `c199da4` has none. The relevé cannot have been produced by any earlier commit. 2026-10-21 hop, checked against the old objects that survive on the machine that ran the rewrites (no map was left in the repository): the old commit 19d19e8fff5534f33cd110d27fb24f89fd796e07 and the successor 0f510b5244c0df60ba20873572ac36485af16a15 carry the same subject, the same author date and the same committer date (raw 1787220449 +0300), and the successor is the only commit of the current history with them. `git diff --stat old successor` is empty.",
       "timeEvidence": "The pass ran 2026-08-20T10:08:32Z to 10:40:28Z with a clean tree. `19d19e8` was committed at 10:07:29Z, 63 seconds before it started, and the next commit in the repository is 4871dd8 at 16:56:53Z — six hours and forty-eight minutes after the pass finished.",
-      "limit": "The original object is gone from this repository and from its reflog, so the two hashes cannot be shown to name the same tree. The claim is that they name the same code, established by the two arguments above, not that the mapping was recorded at the time. It was not."
+      "limit": "The original object is gone from this repository and from its reflog, so the two hashes cannot be shown to name the same tree. The claim is that they name the same code, established by the two arguments above, not that the mapping was recorded at the time. It was not.",
+      "previouslyAt": [
+        "19d19e8"
+      ]
     },
     {
       "missing": "4b4f2b4",
-      "nowAt": "9494259c63d856125000c0e73c8d78156b80554b",
+      "nowAt": "7d99d33f2e0e12fb3cc62ed640b8d4413909f041",
       "citedBy": [
         "document.json"
       ],
       "establishedBy": "recorded at rewrite time, 2026-08-24",
-      "contentEvidence": "Both commits carry the subject « The optimiser was arguing about the small variable » and the same tree for every path except the three licensed modules, which the rewrite removed.",
-      "why": "History from origin/main to HEAD was rewritten to keep politique.ts, exposition.ts and document.ts out of the public repository before any push. The rewrite changed every hash after the first affected commit."
+      "contentEvidence": "Both commits carry the subject « The optimiser was arguing about the small variable » and the same tree for every path except the three licensed modules, which the rewrite removed. 2026-10-21 hop, checked against the old objects that survive on the machine that ran the rewrites (no map was left in the repository): the old commit 4b4f2b40784b6b21ad3f896483cbf46027a8af00 and the successor 7d99d33f2e0e12fb3cc62ed640b8d4413909f041 carry the same subject, the same author date and the same committer date (raw 1787569816 +0300), and the successor is the only commit of the current history with them. `git diff --stat` old to successor lists exactly these files, the first two being the identity replacement of 2026-10-21 (corpus-dur/ecritures-non-latines.md, src/cascade.test.ts, src/exposition.ts). Beyond the identity replacement, one other difference: the successor does not carry src/exposition.ts (221 lines, deleted in `git diff --stat`), while it carries exposition.json. src/exposition.ts is absent from every ref of the current history and from the backup branches; no rewrite note names it. What the repository states: README.md says exposition.json and document.json come from the licensed component, produced outside this repository, and src/journal.test.ts lists exposition.json among the products kept outside it (PRODUITS_HORS_DEPOT, code.depot cascade-licencie). So the file leaving the history is consistent with that statement, but the removal itself is not documented anywhere I found.",
+      "why": "History from origin/main to HEAD was rewritten to keep politique.ts, exposition.ts and document.ts out of the public repository before any push. The rewrite changed every hash after the first affected commit.",
+      "previouslyAt": [
+        "9494259c63d856125000c0e73c8d78156b80554b"
+      ]
     },
     {
       "missing": "5474cee",
@@ -109,29 +116,33 @@
     },
     {
       "missing": "9399e0e",
-      "nowAt": "38da6e0460f6e0e06eb7f9eda2435f2d5bd177b4",
+      "nowAt": "6406e7ce82258ce000db24d3dde03cfd0fa49a96",
       "citedBy": [
         "egress.json"
       ],
       "establishedBy": "recorded at the time of the rewrite",
-      "contentEvidence": "Both commits carry the identical subject line — \"The security document named a count where it demanded a file\" — and the rewrite touched exactly one line of one file, the Stripe witness literal in src/menace.ts, which that commit does not modify. Every other byte of its tree is unchanged.",
+      "contentEvidence": "Both commits carry the identical subject line — \"The security document named a count where it demanded a file\" — and the rewrite touched exactly one line of one file, the Stripe witness literal in src/menace.ts, which that commit does not modify. Every other byte of its tree is unchanged. 2026-10-21 hop, checked against the old objects that survive on the machine that ran the rewrites (no map was left in the repository): the old commit 9399e0e0fd9986e5af37ed515a1ff0c89232dcb6 and the successor 6406e7ce82258ce000db24d3dde03cfd0fa49a96 carry the same subject, the same author date and the same committer date (raw 1787600768 +0300), and the successor is the only commit of the current history with them. `git diff --stat` old to successor lists exactly these files, the first two being the identity replacement of 2026-10-21 (corpus-dur/ecritures-non-latines.md, src/cascade.test.ts, src/menace.ts). Beyond the identity replacement, exactly one other file differs: src/menace.ts, one line, where the synthetic Stripe witness is assembled from fragments (\"sk\" + \"_live_\" + ...) in the successor and written whole in the old commit. That is the documented 24-27 August 2026 rewrite (see whyTheRewrite of the 2026-08-25 neighbour entry, push protection refused the push), which every later commit carries.",
       "timeEvidence": "The rewrite ran on 2026-08-25 with `git filter-branch` over `origin/main..HEAD`, in one pass, mapping each of the 144 commits to exactly one successor in order. The predecessor and successor of both hashes match by subject as well.",
       "limit": "Unlike the earlier entries in this file, this mapping was NOT inferred after the fact: the rewrite was performed deliberately and the correspondence recorded in the same session. The original object still exists locally under the tag `sauvegarde-avant-reecriture`, so a reader on this machine can verify the two trees differ only in that one line. That tag is not pushed, so a reader elsewhere has the subject-line argument and nothing more.",
-      "whyTheRewrite": "GitHub's push protection refused the push: the synthetic Stripe key planted as a witness in src/menace.ts matches its detector. The alternative was to register a permanent allowed-secret exception on the account, invisible in the code and in the tests. Rewriting three commits to assemble the witness from fragments was chosen instead."
+      "whyTheRewrite": "GitHub's push protection refused the push: the synthetic Stripe key planted as a witness in src/menace.ts matches its detector. The alternative was to register a permanent allowed-secret exception on the account, invisible in the code and in the tests. Rewriting three commits to assemble the witness from fragments was chosen instead.",
+      "previouslyAt": [
+        "38da6e0460f6e0e06eb7f9eda2435f2d5bd177b4"
+      ]
     },
     {
       "missing": "9cd4fdd",
-      "nowAt": "0ed22050b431e4633b57c608ac24e58c5059a5fc",
+      "nowAt": "97bbd5e9e2a4fa9608c0c23bcdfd0f31ca4677c4",
       "citedBy": [
         "ocr.json"
       ],
       "establishedBy": "recorded from the old-to-new hash map of the 2026-10-19 history rewrite, not inferred",
-      "contentEvidence": "Both commits carry the identical subject line, \"The reader gives its blocks a height, and a printed line is told by vertical overlap\", and the same author date; the rewrite purged raw outputs from the history and changed hashes, not the code.",
+      "contentEvidence": "Both commits carry the identical subject line, \"The reader gives its blocks a height, and a printed line is told by vertical overlap\", and the same author date; the rewrite purged raw outputs from the history and changed hashes, not the code. 2026-10-21 hop, checked against the old objects that survive on the machine that ran the rewrites (no map was left in the repository): the old commit 9cd4fdd546c8708fc652afff09a7aad3c5859471 and the successor 97bbd5e9e2a4fa9608c0c23bcdfd0f31ca4677c4 carry the same subject, the same author date and the same committer date (raw 1790716870 +0000), and the successor is the only commit of the current history with them. `git diff --stat` old to successor lists only files from the identity replacement of 2026-10-21 (corpus-dur/ecritures-non-latines.md, corpus-externe/ofac-300.csv, src/cascade.test.ts, src/tiers.ts, src/your-cases.test.ts, src/your-cases.ts).",
       "timeEvidence": "Not needed: the correspondence comes from the mapping the rewrite itself produced (old 9cd4fdd546c8708fc652afff09a7aad3c5859471, new deab720e44dc8941e151e72c8369445ee406d148).",
       "limit": "The old object is no longer reachable from main; a reader elsewhere has the identical subject line and the rewrite's mapping, and nothing more.",
       "why": "The 2026-10-19 rewrite purged raw outputs from the history. Every commit after the first touched file got a new hash, so a relevé measured before it records a commit that cannot be checked out.",
       "previouslyAt": [
-        "d03717838acd97b9500fe299d27dc6b68af97d48"
+        "d03717838acd97b9500fe299d27dc6b68af97d48",
+        "0ed22050b431e4633b57c608ac24e58c5059a5fc"
       ],
       "whyTheRewrite": " Rewritten again: Dates of birth, places of birth, identity numbers and OFAC uids of the external corpus were replaced by values of the same shape in the whole history of the public repository (decision of 2026-10-21)."
     },
@@ -164,17 +175,18 @@
     },
     {
       "missing": "469223fac2a13b82f89429c00a8271f116c44be5",
-      "nowAt": "1b0bf79142063953f9f8e49e0ade57405b6186d3",
+      "nowAt": "adbfebe98fc04124d2e055bbd1f9d786a2b25809",
       "citedBy": [
         "survivants.json"
       ],
       "establishedBy": "recorded at rewrite time, not inferred",
-      "contentEvidence": "git filter-repo commit-map written while both sides existed: the same commit with the same tree apart from the removed individuals' names.",
+      "contentEvidence": "git filter-repo commit-map written while both sides existed: the same commit with the same tree apart from the removed individuals' names. 2026-10-21 hop, checked against the old objects that survive on the machine that ran the rewrites (no map was left in the repository): the old commit 469223fac2a13b82f89429c00a8271f116c44be5 and the successor adbfebe98fc04124d2e055bbd1f9d786a2b25809 carry the same subject, the same author date and the same committer date (raw 1787777368 +0300), and the successor is the only commit of the current history with them. `git diff --stat` old to successor lists only files from the identity replacement of 2026-10-21 (corpus-dur/ecritures-non-latines.md, corpus-externe/ofac-300.csv, src/cascade.test.ts, src/tiers.ts, src/your-cases.test.ts, src/your-cases.ts).",
       "timeEvidence": "Not needed: the mapping was written down while both sides existed.",
       "limit": "The old object survives only in the pre-rewrite clone, not in the public repository.",
       "whyTheRewrite": "The names of listed individuals were erased from the whole history of the public repository (decision of 2026-10-20). Rewritten again: Dates of birth, places of birth, identity numbers and OFAC uids of the external corpus were replaced by values of the same shape in the whole history of the public repository (decision of 2026-10-21).",
       "previouslyAt": [
-        "22a32de0aec3412e2a01d308093624aad87d8817"
+        "22a32de0aec3412e2a01d308093624aad87d8817",
+        "1b0bf79142063953f9f8e49e0ade57405b6186d3"
       ]
     },
     {
@@ -209,33 +221,107 @@
     },
     {
       "missing": "0a87047",
-      "nowAt": "950855c1309424575b1e3501e07e64c8a24083bd",
+      "nowAt": "116f621de23aee3d52c867365610d52571c05586",
       "citedBy": [
         "dur.json"
       ],
       "establishedBy": "recorded at rewrite time, not inferred",
-      "contentEvidence": "git filter-repo commit-map written while both sides existed: the same commit with the same tree apart from the removed individuals' names.",
+      "contentEvidence": "git filter-repo commit-map written while both sides existed: the same commit with the same tree apart from the removed individuals' names. 2026-10-21 hop, checked against the old objects that survive on the machine that ran the rewrites (no map was left in the repository): the old commit 0a870475dbc4506b6d9e59d69ace3369f9cf118f and the successor 116f621de23aee3d52c867365610d52571c05586 carry the same subject, the same author date and the same committer date (raw 1787846834 +0300), and the successor is the only commit of the current history with them. `git diff --stat` old to successor lists only files from the identity replacement of 2026-10-21 (corpus-dur/ecritures-non-latines.md, corpus-externe/ofac-300.csv, src/cascade.test.ts, src/tiers.ts, src/your-cases.test.ts, src/your-cases.ts).",
       "timeEvidence": "Not needed: the mapping was written down while both sides existed.",
       "limit": "The old object survives only in the pre-rewrite clone, not in the public repository.",
       "whyTheRewrite": "The names of listed individuals were erased from the whole history of the public repository (decision of 2026-10-20). Rewritten again: Dates of birth, places of birth, identity numbers and OFAC uids of the external corpus were replaced by values of the same shape in the whole history of the public repository (decision of 2026-10-21).",
       "previouslyAt": [
-        "f4343afcfcbcea99edb11bf3d0aa61d2c4941001"
+        "f4343afcfcbcea99edb11bf3d0aa61d2c4941001",
+        "950855c1309424575b1e3501e07e64c8a24083bd"
       ]
     },
     {
       "missing": "ee18170",
-      "nowAt": "a869e256254d837d44ce7e109db775736f63b95f",
+      "nowAt": "6bdb8bec2180ccf2201f772e5a1276f2846fc3fb",
       "citedBy": [
         "vendor-prices.json"
       ],
       "establishedBy": "recorded at rewrite time, not inferred",
-      "contentEvidence": "git filter-repo commit-map written while both sides existed: the same commit with the same tree apart from the removed individuals' names.",
+      "contentEvidence": "git filter-repo commit-map written while both sides existed: the same commit with the same tree apart from the removed individuals' names. 2026-10-21 hop, checked against the old objects that survive on the machine that ran the rewrites (no map was left in the repository): the old commit ee181700eea3169bb553f25c7517275fb4584e9e and the successor 6bdb8bec2180ccf2201f772e5a1276f2846fc3fb carry the same subject, the same author date and the same committer date (raw 1790596931 +0300), and the successor is the only commit of the current history with them. `git diff --stat` old to successor lists only files from the identity replacement of 2026-10-21 (corpus-dur/ecritures-non-latines.md, corpus-externe/ofac-300.csv, src/cascade.test.ts, src/tiers.ts, src/your-cases.test.ts, src/your-cases.ts).",
       "timeEvidence": "Not needed: the mapping was written down while both sides existed.",
       "limit": "The old object survives only in the pre-rewrite clone, not in the public repository.",
       "whyTheRewrite": "The names of listed individuals were erased from the whole history of the public repository (decision of 2026-10-20). Rewritten again: Dates of birth, places of birth, identity numbers and OFAC uids of the external corpus were replaced by values of the same shape in the whole history of the public repository (decision of 2026-10-21).",
       "previouslyAt": [
-        "c64622e8d80a177e6bbcd228030ed39a43022b13"
+        "c64622e8d80a177e6bbcd228030ed39a43022b13",
+        "a869e256254d837d44ce7e109db775736f63b95f"
       ]
+    },
+    {
+      "missing": "87f83c8",
+      "nowAt": "78734c409e3dc8b9b4be78d0f7f7fb19f7290b39",
+      "citedBy": [
+        "apparie-prompt.json"
+      ],
+      "establishedBy": "checked against the old object, which still exists on the machine that ran the rewrite; not recorded in a rewrite map (the 2026-10-19 map lists 87f83c8 as unchanged, the 2026-10-21 rewrite that moved it left no map in the repository)",
+      "contentEvidence": "git diff --stat between the old object 87f83c871c3ce13f60e5f7c29e9b8fc87235081e and 78734c409e3dc8b9b4be78d0f7f7fb19f7290b39 is empty: the two trees are identical. Both carry the same subject line, \"Ask whether the tier ranking survives a change of prompt, and keep the case-by-case answers\", the same author and committer date (2026-08-21 13:40:34 +0300), and parents with the same subject and date (\"Tune each generative tier's formulation on dev, never on held-out\", 2026-08-21 00:48:26 +0300). It is the only commit of the current history with that subject.",
+      "timeEvidence": "Not needed: identical trees and identical dates leave no other candidate.",
+      "limit": "The old object is no longer reachable from main and is not in the public repository; a reader elsewhere has the subject line, the dates and this statement, and nothing more.",
+      "why": "The history was rewritten on 2026-10-19 and again on 2026-10-21 (decision of 2026-10-21: values of the same shape replaced in the whole history). Commits after the first touched file got new hashes, so a relevé measured before it records a commit that cannot be checked out."
+    },
+    {
+      "missing": "1c584d9",
+      "nowAt": "d35ad95c4836bf4d08d3293790461e34bfaffcd2",
+      "citedBy": [
+        "departage-reglage.json"
+      ],
+      "establishedBy": "checked against the old objects, which still exist on the machine that ran the rewrites; the 2026-10-21 rewrite left no map in the repository",
+      "contentEvidence": "2026-10-21 hop, checked against the old objects that survive on the machine that ran the rewrites (no map was left in the repository): the old commit 1c584d9667c5fd9c40726359d3b7bcfe824fe578 and the successor d35ad95c4836bf4d08d3293790461e34bfaffcd2 carry the same subject, the same author date and the same committer date (raw 1787312361 +0300), and the successor is the only commit of the current history with them. `git diff --stat old successor` is empty.",
+      "timeEvidence": "Not needed: identical dates and subject leave no other candidate.",
+      "limit": "The old object is no longer reachable from main and is not in the public repository; a reader elsewhere has the subject line, the dates and this statement, and nothing more.",
+      "why": "The history was rewritten on 2026-10-19 and again on 2026-10-21, so a relevé measured before it records a commit that cannot be checked out."
+    },
+    {
+      "missing": "2be9cbf",
+      "nowAt": "23e92cd85bcb218bc98324e7b2175cf1c87e33d5",
+      "citedBy": [
+        "prompts-2026-08-20.json"
+      ],
+      "establishedBy": "checked against the old objects, which still exist on the machine that ran the rewrites; the 2026-10-21 rewrite left no map in the repository",
+      "contentEvidence": "2026-10-21 hop, checked against the old objects that survive on the machine that ran the rewrites (no map was left in the repository): the old commit 2be9cbf69257f52bd2dbb582310f1a8749f16df8 and the successor 23e92cd85bcb218bc98324e7b2175cf1c87e33d5 carry the same subject, the same author date and the same committer date (raw 1787256406 +0300), and the successor is the only commit of the current history with them. `git diff --stat old successor` is empty.",
+      "timeEvidence": "Not needed: identical dates and subject leave no other candidate.",
+      "limit": "The old object is no longer reachable from main and is not in the public repository; a reader elsewhere has the subject line, the dates and this statement, and nothing more.",
+      "why": "The history was rewritten on 2026-10-19 and again on 2026-10-21, so a relevé measured before it records a commit that cannot be checked out."
+    },
+    {
+      "missing": "6d59b5c",
+      "nowAt": "f3c6abfbad77406aeeed2160888b8c93064b3d26",
+      "citedBy": [
+        "prompts-par-palier.json"
+      ],
+      "establishedBy": "checked against the old objects, which still exist on the machine that ran the rewrites; the 2026-10-21 rewrite left no map in the repository",
+      "contentEvidence": "2026-10-21 hop, checked against the old objects that survive on the machine that ran the rewrites (no map was left in the repository): the old commit 6d59b5c2919ad852db8511ea32a76aed467d16e8 and the successor f3c6abfbad77406aeeed2160888b8c93064b3d26 carry the same subject, the same author date and the same committer date (raw 1787262506 +0300), and the successor is the only commit of the current history with them. `git diff --stat old successor` is empty.",
+      "timeEvidence": "Not needed: identical dates and subject leave no other candidate.",
+      "limit": "The old object is no longer reachable from main and is not in the public repository; a reader elsewhere has the subject line, the dates and this statement, and nothing more.",
+      "why": "The history was rewritten on 2026-10-19 and again on 2026-10-21, so a relevé measured before it records a commit that cannot be checked out."
+    },
+    {
+      "missing": "c199da4",
+      "nowAt": "49be89f4dbdaf061e85eecc60a2e382cf75dcc0f",
+      "citedBy": [
+        "profiles-2026-08-20-un-coeur-pris.json"
+      ],
+      "establishedBy": "checked against the old objects, which still exist on the machine that ran the rewrites; the 2026-10-21 rewrite left no map in the repository",
+      "contentEvidence": "2026-10-21 hop, checked against the old objects that survive on the machine that ran the rewrites (no map was left in the repository): the old commit c199da4d4e0f93c5afea2890b02ea23b5c297126 and the successor 49be89f4dbdaf061e85eecc60a2e382cf75dcc0f carry the same subject, the same author date and the same committer date (raw 1787216232 +0300), and the successor is the only commit of the current history with them. `git diff --stat old successor` is empty.",
+      "timeEvidence": "Not needed: identical dates and subject leave no other candidate.",
+      "limit": "The old object is no longer reachable from main and is not in the public repository; a reader elsewhere has the subject line, the dates and this statement, and nothing more.",
+      "why": "The history was rewritten on 2026-10-19 and again on 2026-10-21, so a relevé measured before it records a commit that cannot be checked out."
+    },
+    {
+      "missing": "d3fc94b",
+      "nowAt": "3295c3d81b5994dbddbd2a0dfa117a270a56eb1c",
+      "citedBy": [
+        "profiles-2026-08-20-charge-8.json"
+      ],
+      "establishedBy": "checked against the old objects, which still exist on the machine that ran the rewrites; the 2026-10-21 rewrite left no map in the repository",
+      "contentEvidence": "2026-10-21 hop, checked against the old objects that survive on the machine that ran the rewrites (no map was left in the repository): the old commit d3fc94bde4f588cd44430b72387b9b37c5f2803e and the successor 3295c3d81b5994dbddbd2a0dfa117a270a56eb1c carry the same subject, the same author date and the same committer date (raw 1787250746 +0300), and the successor is the only commit of the current history with them. `git diff --stat old successor` is empty.",
+      "timeEvidence": "Not needed: identical dates and subject leave no other candidate.",
+      "limit": "The old object is no longer reachable from main and is not in the public repository; a reader elsewhere has the subject line, the dates and this statement, and nothing more.",
+      "why": "The history was rewritten on 2026-10-19 and again on 2026-10-21, so a relevé measured before it records a commit that cannot be checked out."
     }
   ]
 }

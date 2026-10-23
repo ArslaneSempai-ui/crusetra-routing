@@ -275,8 +275,12 @@ function commitReecrit(commit: string | null) {
  * Avant lui, `measure.ts` n'avait pas de sélection de prompt : une seule formulation pouvait
  * tourner, et c'était la référence. Ce n'est donc pas une supposition mais une propriété du
  * code de l'époque — et un test la vérifie en demandant à git plutôt qu'en la croyant.
+ *
+ * Ce commit s'appelait cd05c3c avant la réécriture du 2026-10-21. L'ancien objet n'existe plus
+ * que sur la machine qui a réécrit : le test passait là et échouait sur un clone neuf. Le
+ * successeur a le même sujet, les mêmes dates, et `git diff --stat cd05c3c a54a0e3` est vide.
  */
-export const PREMIER_COMMIT_MULTI_FORMULATION = "cd05c3c";
+export const PREMIER_COMMIT_MULTI_FORMULATION = "a54a0e3";
 
 function formulation(b: { promptUtilise?: string; measuredAt: string }) {
   if (b.promptUtilise) return { phrasing: b.promptUtilise, phrasingSource: "recorded" };
